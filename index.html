@@ -234,6 +234,7 @@ let markedText = null;
 let revisedText = null;
 let submitted = false;
 let submitFailed = false;
+let lastSubmitError = '';
 let draft = {text:'', loading:false};
 let levelLocked = false;
 let aiAssignedLevel = null;
@@ -860,7 +861,8 @@ async function submitWork(){
     submitted = true; render();
   }catch(e){
     submitFailed = true;
-    toast(`제출 저장에 실패했어요. 아래 안내를 확인해주세요.`);
+    lastSubmitError = (e && e.message) || String(e);
+    toast(`제출 저장에 실패했어요: ${lastSubmitError}`);
     render();
   }
 }
@@ -907,6 +909,7 @@ function render(){
       ? `<div style="border:1.5px solid var(--stamp-red);border-radius:8px;padding:14px 16px;">
           <p style="font-weight:700;color:var(--stamp-red);margin:0 0 8px;">⚠️ 자동 저장이 안 됐어요</p>
           <p style="font-size:12.5px;color:#6b6353;margin:0 0 10px;">네트워크 문제일 수 있어요. 아래 버튼으로 다시 시도해보고, 그래도 안 되면 "복사하기"로 글을 복사해서 선생님이 안내한 패들렛에 붙여넣어 주세요.</p>
+          <p style="font-size:11px;color:#9a9184;margin:0 0 10px;word-break:break-all;">[디버그] ${lastSubmitError}</p>
           <div class="btn-row">
             <button class="btn-navy" onclick="submitWork()">🔁 다시 시도</button>
             <button class="btn-outline" onclick="copyText()">📋 복사하기</button>
