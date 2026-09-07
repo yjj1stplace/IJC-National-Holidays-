@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Country's Holiday — Writing Passport</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1B2A4A;--paper:#FAF6ED;--stamp-red:#B33A3A;--gold:#C89B3C;--ink:#2B2620;--green:#4C7A5D;--line:#D8D0BC;
+    --g-blue:#2E6FBA;--a-teal:#2C9E8F;--t-orange:#E8963C;--e-pink:#D9527A;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'IBM Plex Sans KR','IBM Plex Sans',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;padding:28px 16px 60px;}
+  .wrap{max-width:720px;margin:0 auto;}
+  .header{text-align:center;margin-bottom:18px;}
+  .gate-bar{height:6px;border-radius:999px;margin:0 auto 16px;max-width:260px;
+    background:linear-gradient(90deg, var(--g-blue) 0%, var(--a-teal) 33%, var(--t-orange) 66%, var(--e-pink) 100%);}
+  .header .eyebrow{font-size:13px;letter-spacing:0.02em;color:var(--stamp-red);margin-bottom:4px;}
+  .header h1{font-family:'Spectral',serif;font-weight:600;font-size:30px;margin:0 0 6px;
+    background:linear-gradient(90deg, var(--g-blue), var(--a-teal), var(--t-orange), var(--e-pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .header p{margin:0;font-size:14px;color:#6b6353;}
+  .header .gate-tagline{font-size:13.5px;font-weight:700;letter-spacing:.02em;margin-bottom:6px;
+    background:linear-gradient(90deg, var(--g-blue), var(--a-teal), var(--t-orange), var(--e-pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .header .unit-link{margin-top:8px;font-size:12px;color:#9a9184;font-style:italic;}
+
+  .idbar{display:flex;gap:10px;justify-content:center;margin-bottom:16px;flex-wrap:wrap;}
+  .idbar input, .idbar select{border:1.5px solid var(--line);border-radius:6px;padding:8px 12px;font-size:13.5px;width:140px;font-family:inherit;background:#fff;}
+
+  .levels{display:flex;gap:10px;justify-content:center;margin-bottom:26px;flex-wrap:wrap;}
+  .level-btn{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:9px 18px;font-size:14px;font-weight:600;cursor:pointer;color:var(--ink);display:flex;align-items:center;gap:6px;transition:all .15s ease;}
+  .level-btn:hover{border-color:var(--navy);}
+  .level-btn.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+
+  .card{position:relative;background:#fff;border-radius:4px;padding:6px;margin-bottom:22px;}
+  .card-frame{border:10px solid transparent;border-image: repeating-linear-gradient(45deg, var(--stamp-red) 0 12px, var(--navy) 12px 24px) 10;border-radius:4px;}
+  .card-inner{background:#fff;border-radius:2px;padding:26px 24px 22px;}
+
+  .steps{display:flex;justify-content:space-between;margin-bottom:22px;gap:4px;}
+  .stamp{flex:1;text-align:center;cursor:pointer;padding-bottom:8px;border-bottom:3px solid var(--line);transition:border-color .15s ease;}
+  .stamp.active{border-color:var(--stamp-red);}
+  .stamp.done .num{background:var(--green);color:#fff;border-color:var(--green);}
+  .stamp .num{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;margin:0 auto 5px;font-size:12px;font-weight:700;color:#6b6353;}
+  .stamp.active .num{border-color:var(--stamp-red);color:var(--stamp-red);}
+  .stamp .label{font-size:10.5px;color:#6b6353;letter-spacing:.02em;}
+  .gate-tags{display:flex;gap:3px;justify-content:center;margin-top:3px;}
+  .gate-tag{width:15px;height:15px;border-radius:50%;color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .gate-tag.G{background:var(--g-blue);}
+  .gate-tag.A{background:var(--a-teal);}
+  .gate-tag.T{background:var(--t-orange);}
+  .gate-tag.E{background:var(--e-pink);}
+
+  .step-title{font-family:'Spectral',serif;font-size:19px;font-weight:600;color:var(--navy);margin:0 0 4px;}
+  .step-sub{font-size:13.5px;color:#6b6353;margin:0 0 16px;}
+
+  .expr-box{background:#F4EEDD;border-left:3px solid var(--gold);border-radius:2px;padding:10px 14px;font-size:13px;line-height:1.7;margin-bottom:16px;color:#5b5340;}
+  .expr-box b{color:var(--navy);}
+
+  label.field-label{display:block;font-size:12.5px;font-weight:600;color:var(--navy);margin-bottom:6px;}
+  select, input[type=text], input[type=file], textarea{width:100%;font-family:inherit;font-size:14.5px;padding:10px 12px;border:1.5px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);margin-bottom:12px;}
+  select:focus, input:focus, textarea:focus{outline:2px solid var(--gold);border-color:var(--gold);}
+  textarea{resize:vertical;min-height:76px;line-height:1.6;}
+
+  .checks{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+  .chk{border:1.5px solid var(--line);border-radius:999px;padding:6px 13px;font-size:13px;cursor:pointer;user-select:none;background:#fff;}
+  .chk.on{background:var(--navy);border-color:var(--navy);color:#fff;}
+
+  .preview{background:#fbfaf5;border:1px dashed var(--line);border-radius:6px;padding:12px 14px;font-size:13.5px;color:#6b6353;min-height:20px;margin-top:2px;}
+
+  .nav-row{display:flex;justify-content:space-between;margin-top:20px;}
+  .nav-btn{border:1.5px solid var(--navy);background:#fff;color:var(--navy);font-weight:600;font-size:13.5px;padding:9px 18px;border-radius:6px;cursor:pointer;}
+  .nav-btn.primary{background:var(--navy);color:#fff;}
+  .nav-btn:disabled{opacity:0.35;cursor:not-allowed;}
+
+  .final-text{font-size:15px;line-height:1.8;white-space:pre-wrap;background:#fbfaf5;border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:16px;}
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .btn-solid{background:var(--stamp-red);color:#fff;border:none;padding:11px 20px;border-radius:6px;font-weight:700;font-size:14px;cursor:pointer;}
+  .btn-solid:disabled{opacity:.5;cursor:not-allowed;}
+  .btn-outline{background:#fff;border:1.5px solid var(--line);color:var(--ink);padding:11px 20px;border-radius:6px;font-weight:600;font-size:14px;cursor:pointer;}
+  .btn-navy{background:var(--navy);color:#fff;border:none;padding:11px 20px;border-radius:6px;font-weight:700;font-size:14px;cursor:pointer;}
+
+  .feedback-stamp{margin-top:20px;border:2px solid var(--green);border-radius:8px;padding:16px 18px;background:#F2F7F3;}
+  .feedback-stamp .fb-title{font-family:'Spectral',serif;font-weight:600;color:var(--green);font-size:15px;margin:0 0 8px;}
+  .feedback-stamp .fb-body{font-size:14px;line-height:1.75;white-space:pre-wrap;}
+  .loading{font-size:13.5px;color:#6b6353;}
+
+  .submit-box{margin-top:22px;border-top:1px dashed var(--line);padding-top:18px;}
+  .submitted-badge{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;padding:8px 16px;border-radius:999px;font-weight:700;font-size:13.5px;}
+
+  .note{text-align:center;font-size:11.5px;color:#9a9184;margin-top:18px;}
+  .teacher-link{display:block;text-align:center;margin-top:26px;font-size:12px;color:#b0a68f;cursor:pointer;text-decoration:underline;}
+
+  .draft-card .card-inner{padding:40px 36px 34px;}
+  .draft-card .step-title{font-size:26px;}
+  .draft-card .step-sub{font-size:15px;margin-bottom:20px;}
+  .draft-card input[type=file]{
+    padding:22px 16px;
+    font-size:15px;
+    border:2.5px dashed var(--gold);
+    background:#FBF7EC;
+    border-radius:10px;
+    cursor:pointer;
+    text-align:center;
+  }
+  .draft-card textarea{min-height:130px;font-size:15.5px;}
+  .draft-card label.field-label{font-size:14px;margin-top:14px;}
+  .draft-card .loading{font-size:15px;margin-top:10px;}
+
+  details.draftref{margin-bottom:14px;background:#fbfaf5;border:1px dashed var(--line);border-radius:6px;padding:8px 12px;}
+  details.draftref summary{cursor:pointer;color:var(--navy);font-size:13px;font-weight:600;}
+  details.draftref .dtext{margin-top:8px;font-size:13px;line-height:1.6;color:#5b5340;white-space:pre-wrap;}
+
+  .modal-bg{position:fixed;inset:0;background:rgba(27,42,74,.55);display:flex;align-items:flex-start;justify-content:center;padding:30px 14px;overflow-y:auto;z-index:50;}
+  .modal{background:#fff;border-radius:10px;max-width:940px;width:100%;padding:22px 24px;}
+  .modal h2{font-family:'Spectral',serif;color:var(--navy);margin-top:0;}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;}
+  th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{color:var(--navy);font-size:11.5px;}
+  .tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:10.5px;font-weight:700;color:#fff;}
+  .tag.l1{background:var(--g-blue);}
+  .tag.l2{background:var(--a-teal);}
+  .tag.l3{background:var(--e-pink);}
+  .modal-close{float:right;cursor:pointer;font-size:20px;color:#9a9184;}
+  .row-detail{background:#fbfaf5;font-size:12px;white-space:pre-wrap;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="setupSection">
+    <div class="header">
+      <p class="gate-tagline">Let's open the GATE to the world!</p>
+      <div class="eyebrow">INTERNATIONAL JOINT CLASS · WRITING PASSPORT</div>
+      <h1>My Country's Holiday</h1>
+      <p class="unit-link">Unit 11 연계 · "Do you know anything about Tuho?"</p>
+    </div>
+
+    <div class="gate-bar"></div>
+    <div class="idbar">
+      <select id="idClass" onchange="studentInfo.cls=this.value">
+        <option value="" disabled selected>반 선택</option>
+        <option value="6-1">6-1</option>
+        <option value="6-2">6-2</option>
+        <option value="6-3">6-3</option>
+      </select>
+      <input type="text" id="idNum" placeholder="번호" style="width:70px;" oninput="studentInfo.num=this.value">
+      <input type="text" id="idName" placeholder="이름" oninput="studentInfo.name=this.value">
+    </div>
+
+    <div class="card draft-card"><div class="card-frame"><div class="card-inner" id="draftInner"></div></div></div>
+  </div>
+
+  <div id="levelIntroSection" style="display:none;"></div>
+
+  <div id="writingSection" style="display:none;">
+    <div id="idbarWriting" class="idbar" style="margin-bottom:6px;"></div>
+    <div id="writingLevelBar"></div>
+    <div class="card"><div class="card-frame"><div class="card-inner" id="cardInner"></div></div></div>
+    <p class="note">이 페이지를 새로고침하면 작성 중인 내용이 사라져요. 제출을 완료해야 선생님께 전달돼요.</p>
+  </div>
+
+  <div class="teacher-link" onclick="openTeacher()">👩‍🏫 선생님만 보기 (LCMS)</div>
+</div>
+
+<script>
+const CLAUDE_PROXY_URL = "https://script.google.com/macros/s/AKfycbxh1BnKzUdLqXs9-DXHBuCoQ67iM5p-WPGZKNnwSYOoFEH-yBZKGt2C4wsJymA3uETadQ/exec";
+
+async function callClaude(bodyObj){
+  const response = await fetch(CLAUDE_PROXY_URL, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain;charset=utf-8" }, // avoids CORS preflight to Apps Script
+    body: JSON.stringify(bodyObj)
+  });
+  if(!response.ok){
+    const errBody = await response.text();
+    throw new Error(`HTTP ${response.status}: ${errBody.slice(0,300)}`);
+  }
+  const data = await response.json();
+  if(data.error){
+    throw new Error(`API error: ${data.error.type||''} ${data.error.message||JSON.stringify(data.error)}`);
+  }
+  return data;
+}
+
+const STEPS = [
+  {key:'start', num:1, label:'START', title:'인사로 시작하기', sub:'발표를 자연스럽게 시작해봐요.'},
+  {key:'what',  num:2, label:'WHAT',  title:'어떤 날인가요?', sub:'명절 이름과 어떤 날인지 소개해요.'},
+  {key:'when',  num:3, label:'WHEN',  title:'언제인가요?', sub:'날짜나 계절을 알려줘요.'},
+  {key:'do',    num:4, label:'WHAT WE DO', title:'무엇을 하나요?', sub:'그날 하는 일들을 소개해요.'},
+  {key:'me',    num:5, label:'FOR ME', title:'나에게 어떤 날인가요?', sub:'이 명절이 나에게 특별한 이유를 말해요.'},
+  {key:'ask',   num:6, label:'ASK', title:'상대에게 물어보기', sub:'내 이야기와 연결된 질문을 만들어 세계에 대한 관심을 표현해봐요.'},
+];
+
+const GATE_TAGS = {start:['G'], what:['G'], when:['G'], do:['A','T'], me:['T'], ask:['E']};
+
+const HOLIDAYS = ['Seollal (Lunar New Year)','Chuseok (Korean Thanksgiving)',"Children's Day",'Hangeul Day','Christmas',"Buddha's Birthday",'Direct write...'];
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const ACTIVITIES = ['eat tteokguk','eat songpyeon','wear hanbok','visit grandparents','play yutnori','watch fireworks','get money from relatives','make wishes','light candles','spend time with family'];
+const REASONS = ["it's fun","I get to see my family","I get money","I love the food","it's beautiful","I feel proud of my culture"];
+const STARTERS = {
+  start: "Do you know anything about my country's holidays? Let me tell you about ",
+  what: "It's a special day in Korea. It's a day for ",
+  when: "It's usually in ",
+  do: "On this day, we ",
+  me: "For me, this holiday is special because "
+};
+
+let studentInfo = {name:'', cls:'', num:''};
+let level = 1;
+let stepIdx = 0;
+let showFinal = false;
+let feedback = null;
+let loadingFb = false;
+let feedbackCount = 0;
+let fbSnapshotText = null;
+let markedText = null;
+let revisedText = null;
+let submitted = false;
+let submitFailed = false;
+let draft = {text:'', loading:false};
+let levelLocked = false;
+let aiAssignedLevel = null;
+let aiAssignReason = '';
+let teacherOverride = false;
+let assigning = false;
+
+let startBlanks = {w1:'', w2:'', w3:'', w4:'', holiday:''};
+let start2 = {q:'', let:'', me:'', holiday:''};
+let whenMode = null;
+let whenVary = {month:''};
+let whenFixed = {prep:'', date:''};
+let doVerbs = {eat:'', see:'', visit:'', play:''};
+let doWith = '';
+let doSingle = {verb:'', obj:'', withWhom:''};
+
+function assembleStartL2(){
+  const b = startBlanks;
+  ans.free.start = `${b.w1} ${b.w2} ${b.w3} anything ${b.w4} ${b.holiday}? Let me tell you about it.`.replace(/\s+/g,' ').trim();
+}
+
+function assembleStart2(){
+  const s = start2;
+  ans.free.start = `${s.q} ${s.let} ${s.me} tell you about ${s.holiday}.`.replace(/\s+/g,' ').trim();
+}
+
+function selectWhenMode(m){ whenMode = m; render(); }
+
+function assembleWhenVary(){
+  ans.free.when = whenVary.month ? `It's usually in ${whenVary.month}.` : '';
+}
+function assembleWhenFixed(){
+  ans.free.when = (whenFixed.prep || whenFixed.date) ? `It's ${whenFixed.prep} ${whenFixed.date}.`.replace(/\s+/g,' ').trim() : '';
+}
+
+function assembleDo2(){
+  const dv = doVerbs;
+  const parts = [];
+  if(dv.eat) parts.push(`We eat ${dv.eat}.`);
+  if(dv.see) parts.push(`We see ${dv.see}.`);
+  if(dv.visit) parts.push(`We visit ${dv.visit}.`);
+  if(dv.play) parts.push(`We play ${dv.play}.`);
+  if(doWith) parts.push(`We do this with ${doWith}.`);
+  ans.free.do = parts.join(' ');
+}
+
+function assembleDoSingle(){
+  const ds = doSingle;
+  ans.free.do = (ds.verb || ds.obj || ds.withWhom) ? `We ${ds.verb} ${ds.obj} with ${ds.withWhom}.`.replace(/\s+/g,' ').trim() : '';
+}
+
+let ans = {
+  holidayName: '',
+  dateText: '',
+  doActivity: '',
+  doMeaning: '',
+  meReason: '',
+  free: {start:'', what:'', when:'', do:'', me:'', ask:''},
+};
+
+// ---------- generic spelling/romanization helper (used for level-1 content fields) ----------
+function spellField(inputId, ansKey, label, placeholder){
+  return `<label class="field-label">${label}</label>
+    <div style="display:flex;gap:8px;align-items:flex-start;">
+      <input type="text" id="${inputId}" style="flex:1;" value="${ans[ansKey]||''}" placeholder="${placeholder}">
+      <button class="btn-outline" style="padding:10px 14px;white-space:nowrap;" onclick="checkSpelling('${inputId}','${ansKey}')">🔤 철자 확인</button>
+    </div>
+    <div id="${inputId}_hint" class="preview" style="display:none;margin-bottom:12px;"></div>`;
+}
+
+async function checkSpelling(inputId, ansKey){
+  const el = document.getElementById(inputId);
+  const val = (el ? el.value : ans[ansKey] || '').trim();
+  if(!val){ toast('먼저 내용을 써보세요!'); return; }
+  const hintEl = document.getElementById(inputId+'_hint');
+  hintEl.style.display = 'block';
+  hintEl.innerHTML = '확인하는 중...';
+  try{
+    const data = await callClaude({
+      model:"claude-sonnet-4-6", max_tokens:150,
+      messages:[{role:"user", content:`다음은 초등학생이 영어로 쓰려고 시도한 짧은 표현이야: "${val}"\n학생이 의도한 내용(뜻)은 그대로 유지하면서 철자와 문법만 자연스럽게 고쳐줘. 만약 이게 한국의 잘 알려진 명절 이름이면 정확한 영어 명칭(로마자 표기 포함)을 알려줘. 새로운 내용을 추가하거나 학생이 말하지 않은 것을 지어내지 마. 고친 표현만 한 줄로, 다른 설명 없이 출력해.`}]
+    });
+    const suggestion = (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join(' ').trim() || val;
+    hintEl.innerHTML = `<b>제안:</b> ${suggestion} <button class="btn-outline" style="padding:4px 10px;font-size:12px;margin-left:8px;" onclick="applySpelling('${inputId}','${ansKey}', this)">적용</button>`;
+    hintEl.dataset.suggestion = suggestion;
+  }catch(e){
+    hintEl.innerHTML = '확인 중 오류가 발생했어요.';
+  }
+}
+
+function applySpelling(inputId, ansKey, btn){
+  const suggestion = btn.closest('div').dataset.suggestion || btn.parentElement.dataset.suggestion;
+  const hintEl = document.getElementById(inputId+'_hint');
+  const text = hintEl.dataset.suggestion;
+  ans[ansKey] = text;
+  const el = document.getElementById(inputId);
+  if(el) el.value = text;
+  render();
+}
+
+function levelName(l){ return l===1?'문 노크':l===2?'문 반절':'문 활짝'; }
+function levelSub(l){ return l===1?'Knock, Knock!':l===2?"Door's Opening":'Wide Open to the World'; }
+
+// ---------- draft upload & handwriting OCR ----------
+let appScreen = 'setup'; // 'setup' | 'levelIntro' | 'manualPick' | 'writing'
+
+function renderDraft(){
+  const el = document.getElementById('draftInner');
+  el.innerHTML = `
+    <h2 class="step-title">손글씨 초안 업로드</h2>
+    <p class="step-sub">공책에 쓴 초안 사진을 올리면, AI가 글을 읽고 알맞은 단계로 안내해줘요.</p>
+    <input type="file" accept="image/*" onchange="handleDraftFile(this)">
+    ${draft.loading ? `<p class="loading">✏️ 손글씨를 읽는 중...</p>` : ''}
+    ${assigning ? `<p class="loading">🤖 단계를 배정하는 중...</p>` : ''}
+    <p class="teacher-link" style="margin-top:12px;" onclick="startManual()">사진 없이 시작하기 →</p>
+  `;
+}
+
+function handleDraftFile(input){
+  const file = input.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = async ()=>{
+    const base64 = reader.result.split(',')[1];
+    await transcribeHandwriting(base64, file.type);
+  };
+  reader.readAsDataURL(file);
+}
+
+async function transcribeHandwriting(base64, mediaType){
+  draft.loading = true; renderDraft();
+  try{
+    const data = await callClaude({
+      model:"claude-sonnet-4-6", max_tokens:600,
+      messages:[{role:"user", content:[
+        {type:"image", source:{type:"base64", media_type: mediaType, data: base64}},
+        {type:"text", text:"이 이미지는 초등학생이 공책에 손글씨로 쓴 영어 글이야. 이미지에 적힌 내용을 철자나 문법을 고치지 말고, 학생이 쓴 그대로 옮겨 적어줘. 다른 설명 없이 옮겨 적은 텍스트만 출력해줘."}
+      ]}]
+    });
+    draft.text = (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n').trim() || '';
+  }catch(e){
+    draft.text = '';
+  }
+  draft.loading = false; renderDraft();
+  if(draft.text){
+    await assignLevel(draft.text);
+  } else {
+    toast('손글씨를 읽지 못했어요. 다시 시도하거나 "사진 없이 시작하기"를 눌러주세요.');
+  }
+}
+
+async function assignLevel(text){
+  assigning = true; renderDraft();
+  try{
+    const data = await callClaude({
+      model:"claude-sonnet-4-6", max_tokens:150,
+      messages:[{role:"user", content:`다음은 한국 초등학교 6학년 학생이 손글씨로 쓴 영어 초안이야:\n"${text}"\n\n이 학생의 현재 영어 표현 수준을 보고 아래 세 단계 중 하나를 배정해줘. 문법 정확성보다 "문장을 스스로 구성할 수 있는 정도"를 기준으로 판단해.\n1 = 문 노크 (단어 나열 수준, 완전한 문장 구성이 아직 어려움)\n2 = 문 반절 (짧고 단순한 문장은 스스로 쓸 수 있음)\n3 = 문 활짝 (여러 문장을 연결해 자기 생각을 자유롭게 표현 가능)\n\n반드시 아래 형식으로만 답해:\nLEVEL: (1, 2, 3 중 하나)\nREASON: (한국어로 한 문장, 왜 이 단계인지 학생 글의 특징을 근거로 간단히)`}]
+    });
+    const text_out = (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n');
+    const lvlMatch = text_out.match(/LEVEL:\s*(\d)/);
+    const reasonMatch = text_out.match(/REASON:\s*(.+)/s);
+    const lvl = lvlMatch ? parseInt(lvlMatch[1]) : 2;
+    aiAssignedLevel = (lvl>=1 && lvl<=3) ? lvl : 2;
+    aiAssignReason = reasonMatch ? reasonMatch[1].trim() : '';
+    level = aiAssignedLevel;
+    teacherOverride = false;
+    appScreen = 'levelIntro';
+  }catch(e){
+    toast('단계 배정 중 오류가 발생했어요. "사진 없이 시작하기"로 직접 선택해주세요.');
+  }
+  assigning = false; render();
+}
+
+function startManual(){ appScreen = 'manualPick'; render(); }
+function teacherUnlock(){ appScreen = 'manualPick'; render(); }
+function beginWriting(){ appScreen = 'writing'; stepIdx = 0; showFinal = false; render(); }
+
+function pickLevel(l){
+  level = l;
+  teacherOverride = (aiAssignedLevel!==null) && (l !== aiAssignedLevel);
+  appScreen = 'writing';
+  render();
+}
+
+function draftRefBox(){
+  if(!draft.text) return '';
+  return `<details class="draftref"><summary>📖 내 손글씨 초안 보기</summary><div class="dtext">${draft.text}</div></details>`;
+}
+
+// ---------- level intro / manual pick screen ----------
+function renderLevelIntro(){
+  const el = document.getElementById('levelIntroSection');
+  const LC = {1:'var(--g-blue)', 2:'var(--a-teal)', 3:'var(--e-pink)'};
+  if(appScreen==='levelIntro'){
+    el.innerHTML = `<div class="card"><div class="card-frame"><div class="card-inner" style="text-align:center;">
+      ${doorSVG(aiAssignedLevel,80)}
+      <p style="font-size:15px;font-weight:700;margin:10px 0 2px;">${levelSub(aiAssignedLevel)}</p>
+      ${aiAssignReason?`<p style="font-size:12.5px;color:#9a9184;margin:0 0 14px;">${aiAssignReason}</p>`:''}
+      <button class="btn-navy" onclick="beginWriting()">시작하기 →</button>
+      <div style="margin-top:10px;"><span class="teacher-link" style="margin:0;" onclick="teacherUnlock()">👩‍🏫 선생님이 다르게 배정</span></div>
+    </div></div></div>`;
+  } else if(appScreen==='manualPick'){
+    el.innerHTML = `<div class="card"><div class="card-frame"><div class="card-inner">
+      <p class="step-sub" style="text-align:center;">단계를 선택해주세요</p>
+      <div class="levels" id="manualLevels"></div>
+    </div></div></div>`;
+    const mEl = document.getElementById('manualLevels');
+    [1,2,3].forEach(l=>{
+      const b = document.createElement('button');
+      b.className = 'level-btn' + (level===l?' active':'');
+      b.style.borderColor = LC[l]; b.style.flexDirection='column'; b.style.gap='4px';
+      if(level===l) b.style.background = LC[l];
+      b.innerHTML = `${doorSVG(l,44)}<span style="font-size:12px;font-weight:700;">${levelSub(l)}</span>`;
+      b.onclick = ()=>pickLevel(l);
+      mEl.appendChild(b);
+    });
+  } else {
+    el.innerHTML = '';
+  }
+}
+
+function renderIdBarWriting(){
+  const el = document.getElementById('idbarWriting');
+  if(!el) return;
+  el.innerHTML = `
+    <select id="idClass2">
+      <option value="" ${!studentInfo.cls?'selected':''} disabled>반 선택</option>
+      <option value="6-1" ${studentInfo.cls==='6-1'?'selected':''}>6-1</option>
+      <option value="6-2" ${studentInfo.cls==='6-2'?'selected':''}>6-2</option>
+      <option value="6-3" ${studentInfo.cls==='6-3'?'selected':''}>6-3</option>
+    </select>
+    <input type="text" id="idNum2" value="${studentInfo.num}" placeholder="번호" style="width:70px;">
+    <input type="text" id="idName2" value="${studentInfo.name}" placeholder="이름">
+  `;
+  document.getElementById('idClass2').onchange = e=>{ studentInfo.cls = e.target.value; };
+  document.getElementById('idNum2').oninput = e=>{ studentInfo.num = e.target.value; };
+  document.getElementById('idName2').oninput = e=>{ studentInfo.name = e.target.value; };
+}
+
+function renderWritingLevelBar(){
+  const el = document.getElementById('writingLevelBar');
+  if(!el) return;
+  el.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:14px;font-size:12.5px;color:#6b6353;">
+    ${doorSVG(level,22)} <span>${levelSub(level)}</span>
+    <span class="teacher-link" style="margin:0;" onclick="teacherUnlock()">조정</span>
+  </div>`;
+}
+
+function stepText(key){
+  if(level===1){
+    if(key==='what'){
+      const name = ans.holidayName || '___';
+      return `It's a Korean holiday. It's called ${name}.`;
+    }
+    if(key==='when') return `It's on ${ans.dateText || '___'}.`;
+    if(key==='do'){
+      const activityPart = ans.free.do || '';
+      const mean = ans.doMeaning || '___';
+      return `${activityPart} We think about ${mean}.`.trim();
+    }
+    if(key==='me') return `I like this holiday because ${ans.meReason || '___'}.`;
+  }
+  return ans.free[key] || '';
+}
+
+function fullParagraph(){ return STEPS.map(s=>stepText(s.key)).filter(Boolean).join(' '); }
+
+function renderStepNav(){
+  return `<div class="steps">${STEPS.map((s,i)=>`
+    <div class="stamp ${i===stepIdx&&!showFinal?'active':''} ${stepText(s.key).trim()&&stepText(s.key).trim()!=='We ___ on this day.'?'done':''}" onclick="goStep(${i})">
+      <div class="num">${s.num}</div><div class="label">${s.label}</div>
+      <div class="gate-tags">${GATE_TAGS[s.key].map(t=>`<span class="gate-tag ${t}">${t}</span>`).join('')}</div>
+    </div>`).join('')}</div>
+    <div style="text-align:center;font-size:10.5px;color:#9a9184;margin-bottom:18px;">
+      <span class="gate-tag G" style="width:12px;height:12px;font-size:7px;display:inline-flex;">G</span> 세계 접근 &nbsp;
+      <span class="gate-tag A" style="width:12px;height:12px;font-size:7px;display:inline-flex;">A</span> 비교·분석 &nbsp;
+      <span class="gate-tag T" style="width:12px;height:12px;font-size:7px;display:inline-flex;">T</span> 생각하기 &nbsp;
+      <span class="gate-tag E" style="width:12px;height:12px;font-size:7px;display:inline-flex;">E</span> 표현하기
+    </div>`;
+}
+
+function goStep(i){ stepIdx=i; showFinal=false; render(); }
+
+function renderStepBody(){
+  const s = STEPS[stepIdx];
+  let exprHtml = '', fieldHtml = '';
+
+  if(s.key==='start'){
+    let startField = '';
+    if(level===1){
+      exprHtml = `<b>힌트:</b> Unit 11에서 배운 표현을 떠올려보세요. 빈칸을 채워 문장을 완성해봐요. "anything"은 이미 있어요!`;
+      const b = startBlanks;
+      startField = `
+        <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:15px;margin-bottom:14px;">
+          <input type="text" id="sb_w1" value="${b.w1}" placeholder="___" style="width:60px;text-align:center;margin:0;">
+          <input type="text" id="sb_w2" value="${b.w2}" placeholder="___" style="width:60px;text-align:center;margin:0;">
+          <input type="text" id="sb_w3" value="${b.w3}" placeholder="___" style="width:60px;text-align:center;margin:0;">
+          <b>anything</b>
+          <input type="text" id="sb_w4" value="${b.w4}" placeholder="___" style="width:60px;text-align:center;margin:0;">
+          <input type="text" id="sb_holiday" value="${b.holiday}" placeholder="휴일 이름" style="width:110px;text-align:center;margin:0;">
+          <span>?</span>
+        </div>
+        <p class="preview" id="stepPreview">${ans.free.start || '문장을 완성해보세요'}</p>`;
+    } else if(level===2){
+      exprHtml = `<b>힌트:</b> 첫 문장을 스스로 채워보세요. 두 번째 문장은 빈칸의 첫 글자를 보고 채워보세요.`;
+      const s2 = start2;
+      startField = `
+        <label class="field-label">첫 문장</label>
+        <input type="text" id="s2_q" value="${s2.q}" placeholder="문장을 써보세요">
+        <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:15px;margin:10px 0 14px;">
+          <input type="text" id="s2_let" value="${s2.let}" placeholder="L..." style="width:56px;text-align:center;margin:0;">
+          <input type="text" id="s2_me" value="${s2.me}" placeholder="m..." style="width:56px;text-align:center;margin:0;">
+          <span>tell you about</span>
+          <input type="text" id="s2_holiday" value="${s2.holiday}" placeholder="명절" style="width:110px;text-align:center;margin:0;">
+          <span>.</span>
+        </div>
+        <p class="preview" id="stepPreview">${ans.free.start || '문장을 완성해보세요'}</p>`;
+    } else {
+      exprHtml = `<b>힌트:</b> 교과서(Unit 11)에서 배운 표현을 떠올려보세요. 인사 문장 두 개를 모두 스스로 써보세요.`;
+      startField = draftRefBox() + `<textarea id="in_free" placeholder="Write your full opening (2 sentences)..." oninput="onFreeInput(this.value)">${ans.free.start||''}</textarea>`;
+    }
+    return `<h2 class="step-title">${s.title}</h2><p class="step-sub">${s.sub}</p>
+      <div class="expr-box">${exprHtml}</div>${startField}
+      <div class="nav-row">
+        <button class="nav-btn" disabled>← 이전</button>
+        <button class="nav-btn primary" onclick="goStep(${stepIdx+1})">다음 →</button>
+      </div>`;
+  }
+
+  if(s.key==='ask'){
+    exprHtml = `<b>표현:</b> Do you have ~ too? / Do you also ~? / What about you? <br>내가 앞에서 쓴 이야기와 연결된 질문이면 더 좋아요. 정답은 없어요, 궁금한 걸 자유롭게 물어보세요!`;
+    const ph = level===1 ? "ex) Do you have Christmas too?" : level===2 ? "ex) Do you also spend time with your family?" : "Write a question for your partner...";
+    fieldHtml = draftRefBox() + `<textarea id="in_free" placeholder="${ph}" oninput="onFreeInput(this.value)">${ans.free.ask||''}</textarea>`;
+    return `<h2 class="step-title">${s.title}</h2><p class="step-sub">${s.sub}</p>
+      <div class="expr-box">${exprHtml}</div>${fieldHtml}
+      <div class="nav-row">
+        <button class="nav-btn" onclick="goStep(${stepIdx-1})">← 이전</button>
+        <button class="nav-btn primary" onclick="goFinal()">완성본 보기 →</button>
+      </div>`;
+  }
+
+  if(level===2 && s.key==='when'){
+    exprHtml = `<b>힌트:</b> 날짜가 매년 바뀌는 명절인지, 정해져 있는지에 따라 골라서 써보세요.`;
+    const modeButtons = `<div style="display:flex;gap:8px;margin-bottom:14px;">
+      <button class="nav-btn ${whenMode==='vary'?'primary':''}" onclick="selectWhenMode('vary')" style="flex:1;">매년 날짜가 달라요</button>
+      <button class="nav-btn ${whenMode==='fixed'?'primary':''}" onclick="selectWhenMode('fixed')" style="flex:1;">날짜가 정해져 있어요</button>
+    </div>`;
+    let inputArea = '';
+    if(whenMode==='vary'){
+      inputArea = `<label class="field-label">It's usually in (월 또는 시기)</label>
+        <input type="text" id="in_when_vary" value="${whenVary.month}" placeholder="ex) September or October">
+        <p class="preview" id="stepPreview">${stepText('when')||'문장을 완성해보세요'}</p>`;
+    } else if(whenMode==='fixed'){
+      inputArea = `<div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;">
+        <span>It's</span>
+        <input type="text" id="in_when_prep" value="${whenFixed.prep}" placeholder="on" style="width:64px;margin:0;">
+        <input type="text" id="in_when_date" value="${whenFixed.date}" placeholder="ex) October 9th" style="flex:1;margin:0;">
+        <span>.</span>
+      </div>
+      <p class="preview" id="stepPreview">${stepText('when')||'문장을 완성해보세요'}</p>`;
+    }
+    fieldHtml = modeButtons + inputArea;
+    return `<h2 class="step-title">${s.title}</h2><p class="step-sub">${s.sub}</p>
+      <div class="expr-box">${exprHtml}</div>${fieldHtml}
+      <div class="nav-row">
+        <button class="nav-btn" onclick="goStep(${stepIdx-1})">← 이전</button>
+        <button class="nav-btn primary" onclick="goStep(${stepIdx+1})">다음 →</button>
+      </div>`;
+  }
+
+  if(level===2 && s.key==='do'){
+    exprHtml = `<b>표현:</b> We eat/see/visit/play ~ with ~. <br>동사 하나를 골라 빈칸을 채워보세요.`;
+    const ds = doSingle;
+    fieldHtml = `
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:15px;margin-bottom:14px;">
+        <span>We</span>
+        <input type="text" id="ds_verb" value="${ds.verb}" placeholder="eat/see/visit/play" style="width:110px;margin:0;">
+        <input type="text" id="ds_obj" value="${ds.obj}" placeholder="___" style="flex:1;min-width:90px;margin:0;">
+        <span>with</span>
+        <input type="text" id="ds_with" value="${ds.withWhom}" placeholder="___" style="flex:1;min-width:90px;margin:0;">
+        <span>.</span>
+      </div>
+      <p class="preview" id="stepPreview">${stepText('do')||'문장을 완성해보세요'}</p>`;
+    return `<h2 class="step-title">${s.title}</h2><p class="step-sub">${s.sub}</p>
+      <div class="expr-box">${exprHtml}</div>${fieldHtml}
+      <div class="nav-row">
+        <button class="nav-btn" onclick="goStep(${stepIdx-1})">← 이전</button>
+        <button class="nav-btn primary" onclick="goStep(${stepIdx+1})">다음 →</button>
+      </div>`;
+  }
+
+  if(level===1){
+    if(s.key==='what'){
+      exprHtml = `<b>표현:</b> It's a Korean holiday. It's called ~. <br>명절은 직접 정해서 영어로 써보세요. 철자가 헷갈리면 도우미를 눌러요.`;
+      fieldHtml = `${spellField('in_holiday','holidayName','명절 이름 (영어로)', 'ex) Seollal, Chuseok, Liberation Day...')}
+        <p class="preview" id="stepPreview">${stepText('what')}</p>`;
+    }
+    if(s.key==='when'){
+      exprHtml = `<b>표현:</b> It's on ~. <br>날짜는 도움 없이 교실 게시판이나 달력을 찾아 스스로 써보세요.`;
+      fieldHtml = `<label class="field-label">날짜 (예: October 3rd)</label>
+        <input type="text" id="in_date" value="${ans.dateText}" placeholder="ex) October 3rd">
+        <p class="preview" id="stepPreview">${stepText('when')}</p>`;
+    }
+    if(s.key==='do'){
+      exprHtml = `<b>표현:</b> We eat/see/visit/play ~. &nbsp;·&nbsp; We think about / remember ~. <br>해당하는 것만 채워도 괜찮아요. 그리고 그날의 의미도 써보세요.`;
+      const dv = doVerbs;
+      fieldHtml = `
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><b style="width:64px;">We eat</b><input type="text" id="dv_eat" value="${dv.eat}" placeholder="ex) tteokguk" style="margin:0;flex:1;"></div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><b style="width:64px;">We see</b><input type="text" id="dv_see" value="${dv.see}" placeholder="ex) fireworks" style="margin:0;flex:1;"></div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><b style="width:64px;">We visit</b><input type="text" id="dv_visit" value="${dv.visit}" placeholder="ex) grandparents" style="margin:0;flex:1;"></div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;"><b style="width:64px;">We play</b><input type="text" id="dv_play" value="${dv.play}" placeholder="ex) yutnori" style="margin:0;flex:1;"></div>
+        <label class="field-label">누구와 함께 하나요?</label>
+        <input type="text" id="dv_with" value="${doWith}" placeholder="ex) my family">
+        ${spellField('in_meaning','doMeaning','어떤 의미가 있나요? (기념하는 것)', 'ex) our country\'s independence, family and gratitude')}
+        <p class="preview" id="stepPreview">${stepText('do')}</p>`;
+    }
+    if(s.key==='me'){
+      exprHtml = `<b>표현:</b> I like this holiday because ~. <br>나에게 왜 특별한지 스스로 생각해서 써보세요.`;
+      fieldHtml = `${spellField('in_reason','meReason','나에게 특별한 이유', 'ex) I get to see my whole family')}
+        <p class="preview" id="stepPreview">${stepText('me')}</p>`;
+    }
+  } else if(level===2){
+    exprHtml = `<b>시작 문장을 이어서 완성해보세요.</b> 앞부분을 지우지 말고 뒤에 이어 써보세요.`;
+    const val = ans.free[s.key] || STARTERS[s.key];
+    fieldHtml = draftRefBox() + `<textarea id="in_free" oninput="onFreeInput(this.value)">${val}</textarea>`;
+  } else {
+    exprHtml = `<b>자유롭게 써보세요.</b> 문장이 완벽하지 않아도 괜찮아요!`;
+    fieldHtml = draftRefBox() + `<textarea id="in_free" placeholder="Write your sentence here..." oninput="onFreeInput(this.value)">${ans.free[s.key]||''}</textarea>`;
+  }
+
+  return `<h2 class="step-title">${s.title}</h2><p class="step-sub">${s.sub}</p>
+    <div class="expr-box">${exprHtml}</div>${fieldHtml}
+    <div class="nav-row">
+      <button class="nav-btn" ${stepIdx===0?'disabled':''} onclick="goStep(${stepIdx-1})">← 이전</button>
+      ${stepIdx<STEPS.length-1 ? `<button class="nav-btn primary" onclick="goStep(${stepIdx+1})">다음 →</button>` : `<button class="nav-btn primary" onclick="goFinal()">완성본 보기 →</button>`}
+    </div>`;
+}
+
+function onFreeInput(v){ ans.free[STEPS[stepIdx].key] = v; }
+
+function updateStepPreview(){
+  const el = document.getElementById('stepPreview');
+  if(el) el.textContent = stepText(STEPS[stepIdx].key);
+}
+
+function bindStepInputs(){
+  const fieldMap = {in_holiday:'holidayName', in_date:'dateText', in_activity:'doActivity', in_meaning:'doMeaning', in_reason:'meReason'};
+  Object.keys(fieldMap).forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.oninput = e=>{ ans[fieldMap[id]] = e.target.value; updateStepPreview(); };
+  });
+  const blankMap = {sb_w1:'w1', sb_w2:'w2', sb_w3:'w3', sb_w4:'w4', sb_holiday:'holiday'};
+  Object.keys(blankMap).forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.oninput = e=>{ startBlanks[blankMap[id]] = e.target.value; assembleStartL2(); updateStepPreview(); };
+  });
+  const s2Map = {s2_q:'q', s2_let:'let', s2_me:'me', s2_holiday:'holiday'};
+  Object.keys(s2Map).forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.oninput = e=>{ start2[s2Map[id]] = e.target.value; assembleStart2(); updateStepPreview(); };
+  });
+  const wv = document.getElementById('in_when_vary');
+  if(wv) wv.oninput = e=>{ whenVary.month = e.target.value; assembleWhenVary(); updateStepPreview(); };
+  const wp = document.getElementById('in_when_prep');
+  if(wp) wp.oninput = e=>{ whenFixed.prep = e.target.value; assembleWhenFixed(); updateStepPreview(); };
+  const wd = document.getElementById('in_when_date');
+  if(wd) wd.oninput = e=>{ whenFixed.date = e.target.value; assembleWhenFixed(); updateStepPreview(); };
+  const dvMap = {dv_eat:'eat', dv_see:'see', dv_visit:'visit', dv_play:'play'};
+  Object.keys(dvMap).forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.oninput = e=>{ doVerbs[dvMap[id]] = e.target.value; assembleDo2(); updateStepPreview(); };
+  });
+  const dw = document.getElementById('dv_with');
+  if(dw) dw.oninput = e=>{ doWith = e.target.value; assembleDo2(); updateStepPreview(); };
+  const dsMap = {ds_verb:'verb', ds_obj:'obj', ds_with:'withWhom'};
+  Object.keys(dsMap).forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.oninput = e=>{ doSingle[dsMap[id]] = e.target.value; assembleDoSingle(); updateStepPreview(); };
+  });
+}
+
+function goFinal(){ showFinal=true; render(); }
+
+function wordsAdded(key){
+  const starter = (STARTERS[key]||'').trim();
+  const full = (ans.free[key]||'').trim();
+  if(!full) return 0;
+  const extra = full.startsWith(starter) ? full.slice(starter.length) : full;
+  return extra.trim().split(/\s+/).filter(Boolean).length;
+}
+
+function autonomyMeta(){
+  if(level===1){
+    return {type:'문장틀+직접작성(문 노크)', detail:{holiday:ans.holidayName, date:ans.dateText, activity:ans.free.do, meaning:ans.doMeaning, reason:ans.meReason, question:ans.free.ask}};
+  }
+  if(level===2){
+    const added = STEPS.reduce((sum,s)=>sum+wordsAdded(s.key),0);
+    return {type:'이어쓰기형(일부 자기표현)', addedWords: added};
+  }
+  const total = STEPS.reduce((sum,s)=>sum+(ans.free[s.key]||'').trim().split(/\s+/).filter(Boolean).length,0);
+  return {type:'자기 작문(전량 자기표현)', wordCount: total};
+}
+
+function renderFinal(){
+  const text = fullParagraph();
+  return `<h2 class="step-title">내 발표 완성본</h2>
+    <p class="step-sub">${levelName(level)} 로 작성했어요.</p>
+    <div class="final-text">${text || '(아직 내용이 없어요)'}</div>
+    <div class="btn-row">
+      <button class="nav-btn" onclick="showFinal=false; render();">← 단계로 돌아가기</button>
+      <button class="btn-outline" onclick="copyText()">📋 복사하기</button>
+      <button class="btn-solid" id="fbBtn" onclick="getFeedback()" ${loadingFb?'disabled':''}>${loadingFb?'피드백 받는 중...':'✨ AI 피드백 받기'}</button>
+    </div>
+    <div id="fbArea"></div>
+    <div class="submit-box" id="submitBox"></div>`;
+}
+
+async function copyText(){
+  const text = getCurrentFinalText();
+  try{
+    if(!navigator.clipboard) throw new Error('clipboard API 없음');
+    await navigator.clipboard.writeText(text);
+    toast('복사했어요!');
+  }catch(e){
+    showCopyFallback(text);
+  }
+}
+
+function showCopyFallback(text){
+  const bg = document.createElement('div');
+  bg.className = 'modal-bg';
+  bg.innerHTML = `<div class="modal" style="max-width:420px;">
+    <span class="modal-close" onclick="this.closest('.modal-bg').remove()">✕</span>
+    <h2 style="font-size:16px;">📋 자동 복사가 안 돼요</h2>
+    <p style="font-size:12.5px;color:#6b6353;margin:0 0 10px;">아래 글을 길게 눌러 전체 선택한 뒤 직접 복사해주세요.</p>
+    <textarea readonly style="min-height:180px;" onclick="this.select()">${text}</textarea>
+  </div>`;
+  document.body.appendChild(bg);
+}
+
+async function getFeedback(){
+  const text = fullParagraph().trim();
+  if(!text){ toast('먼저 문장을 작성해주세요!'); return; }
+  if(fbSnapshotText===null) fbSnapshotText = text;
+  loadingFb = true; feedback=null; markedText=null; render();
+  const levelDesc = level===1 ? '초급(문장 조립 수준)' : level===2 ? '중급(문장 시작 후 이어쓰기)' : '고급(자유 작문)';
+  try{
+    const data = await callClaude({
+      model:"claude-sonnet-4-6", max_tokens:900,
+      messages:[{role:"user", content:`너는 한국 초등학교 6학년 학생(만 11-12세)에게 영어 피드백을 주는 다정한 영어 선생님이야. 이 학생은 국제공동수업(Zoom)에서 인도네시아 친구들에게 우리나라 명절을 소개하는 짧은 발표문을 썼어. 학생의 영어 수준은 "${levelDesc}"이야.
+
+학생이 쓴 글:
+"${text}"
+
+아래 두 부분을 반드시 순서대로, 정확한 구분자와 함께 출력해줘.
+
+===FEEDBACK===
+총 150단어 이내, 따뜻하고 격려하는 말투로 한국어 피드백을 줘 (영어 표현은 그대로 인용해도 됨).
+1) 잘한 점: 구체적으로 칭찬
+2) 다듬으면 좋은 점: 최대 3가지, 각 항목 앞에 반드시 ①②③ 순서로 번호를 붙여. 각 항목마다: 무엇이 문제인지 쉽게 설명 → 왜 그런지 이유 → 올바르게 고친 문장을 명확히 제시. 번호(①②③)는 아래 MARKED 부분과 정확히 같은 순서·개수로 대응해야 해.
+3) 한 가지 제안: 인도네시아 친구에게 물어볼 영어 질문 추천 (이미 있다면 생략)
+
+===MARKED===
+학생이 쓴 원문을 토씨 하나 바꾸지 말고 그대로 다시 출력하되, 위 2)번에서 언급한 부분들을 순서대로 ||①문제부분||, ||②문제부분|| 처럼 표시해. 번호와 순서가 위 피드백의 ①②③과 정확히 일치해야 해. 원문 전체를 빠짐없이 포함하고, 다른 설명은 절대 추가하지 마.`}]
+    });
+    const full_out = (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n');
+    if(!full_out){
+      throw new Error('응답에 텍스트가 없어요. 원본 응답: ' + JSON.stringify(data).slice(0,300));
+    }
+    const parts = full_out.split('===MARKED===');
+    feedback = (parts[0]||'').replace('===FEEDBACK===','').trim() || '피드백을 가져오지 못했어요.';
+    markedText = (parts[1]||text).trim();
+    if(revisedText===null) revisedText = text;
+    feedbackCount++;
+  }catch(err){
+    feedback = `피드백을 가져오는 중 오류가 발생했어요.\n\n[디버그 정보] ${err.message || err}`;
+    markedText = text;
+    if(revisedText===null) revisedText = text;
+  }
+  loadingFb = false; render();
+}
+
+function escapeHtml(s){
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function renderMarked(s){
+  const escaped = escapeHtml(s);
+  return escaped.replace(/\|\|([①②③④⑤]?)(.+?)\|\|/g, (m, num, phrase)=>{
+    const badge = num ? `<b style="color:var(--stamp-red);">${num}</b> ` : '';
+    return `${badge}<span style="color:var(--stamp-red);font-style:italic;">${phrase}</span>`;
+  });
+}
+function getCurrentFinalText(){
+  return (feedback!==null && revisedText!==null) ? revisedText.trim() : fullParagraph().trim();
+}
+
+async function submitWork(){
+  if(!studentInfo.name || !studentInfo.cls || !studentInfo.num){ toast('번호, 이름, 반을 먼저 입력해주세요!'); return; }
+  const text = getCurrentFinalText();
+  if(!text){ toast('내용을 먼저 작성해주세요!'); return; }
+  const meta = autonomyMeta();
+  const record = {
+    num: studentInfo.num, name: studentInfo.name, cls: studentInfo.cls, level, levelName: levelName(level),
+    aiAssignedLevel, aiAssignReason, teacherOverride,
+    finalText: text, autonomy: meta,
+    feedbackUsed: feedbackCount>0, feedbackCount,
+    revisedAfterFeedback: fbSnapshotText!==null && fbSnapshotText.trim()!==text,
+    feedbackText: feedback,
+    hasDraft: !!draft.text, draftText: draft.text || null,
+    submittedAt: new Date().toISOString()
+  };
+  try{
+    const safeCls = String(studentInfo.cls||'').replace(/\s+/g,'');
+    const safeNum = String(studentInfo.num||'').replace(/\s+/g,'');
+    const safeName = String(studentInfo.name||'').replace(/\s+/g,'');
+    const id = 'sub_' + safeCls + '_' + safeNum + '_' + safeName + '_' + Date.now();
+    let result = null;
+    let lastErr = null;
+    for(let attempt=0; attempt<3 && !result; attempt++){
+      try{
+        result = await window.storage.set(id, JSON.stringify(record), true);
+      }catch(e){ lastErr = e; }
+      if(!result && attempt<2) await new Promise(r=>setTimeout(r, 500));
+    }
+    if(!result){
+      throw lastErr || new Error('storage.set이 null을 반환했어요 (저장 실패)');
+    }
+    submitted = true; render();
+  }catch(e){
+    submitFailed = true;
+    toast(`제출 저장에 실패했어요. 아래 안내를 확인해주세요.`);
+    render();
+  }
+}
+
+function render(){
+  document.getElementById('setupSection').style.display = (appScreen==='setup') ? '' : 'none';
+  document.getElementById('levelIntroSection').style.display = (appScreen==='levelIntro'||appScreen==='manualPick') ? '' : 'none';
+  document.getElementById('writingSection').style.display = (appScreen==='writing') ? '' : 'none';
+
+  if(appScreen==='setup') renderDraft();
+  if(appScreen==='levelIntro'||appScreen==='manualPick') renderLevelIntro();
+  if(appScreen!=='writing') return;
+
+  renderIdBarWriting();
+  renderWritingLevelBar();
+  const inner = document.getElementById('cardInner');
+  if(showFinal){
+    inner.innerHTML = renderFinal();
+    const fa = document.getElementById('fbArea');
+    if(loadingFb){
+      fa.innerHTML = `<p class="loading" style="margin-top:16px;">✨ 선생님 AI가 글을 읽고 있어요...</p>`;
+    } else if(feedback){
+      fa.innerHTML = `<div class="feedback-stamp"><p class="fb-title">💌 AI 선생님의 피드백</p><div class="fb-body">${feedback}</div></div>
+        <div class="feedback-stamp" style="border-color:var(--gold);background:#FBF7EC;margin-top:14px;">
+          <p class="fb-title" style="color:var(--navy);">✏️ 이제 직접 고쳐써보세요</p>
+          <p style="font-size:12.5px;color:#6b6353;margin:0 0 10px;">위 피드백의 ①②③ 번호가 아래 빨간 표시와 똑같이 연결돼요. 번호를 하나씩 맞춰보면서, 왜 그런지 이해하고 직접 고쳐보세요.</p>
+          <div class="preview" style="margin-bottom:12px;">${renderMarked(markedText)}</div>
+          <label class="field-label">퇴고한 최종 문장</label>
+          <textarea id="revisedBox" style="min-height:150px;" oninput="revisedText=this.value">${revisedText||''}</textarea>
+        </div>`;
+      const rb = document.getElementById('revisedBox');
+      if(rb) rb.oninput = e=>{ revisedText = e.target.value; };
+    }
+    const sb = document.getElementById('submitBox');
+    sb.innerHTML = submitted
+      ? `<div style="text-align:center;padding:10px 0 4px;">
+          ${earthSVG()}
+          <p style="font-family:'Spectral',serif;font-size:21px;color:var(--navy);margin:12px 0 6px;">🎉 축하합니다!</p>
+          <p style="font-size:15.5px;margin:0 0 6px;">${studentInfo.name}${eunNeun(studentInfo.name)} 글로벌 미래시민에 한 발짝 다가갔어요.</p>
+          <p style="font-size:13.5px;color:#6b6353;font-style:italic;margin:0 0 14px;">${studentInfo.name} is one step closer to becoming a Global Citizen of the Future!</p>
+          <span class="submitted-badge">✅ 제출 완료! 선생님께 전달됐어요</span>
+        </div>`
+      : submitFailed
+      ? `<div style="border:1.5px solid var(--stamp-red);border-radius:8px;padding:14px 16px;">
+          <p style="font-weight:700;color:var(--stamp-red);margin:0 0 8px;">⚠️ 자동 저장이 안 됐어요</p>
+          <p style="font-size:12.5px;color:#6b6353;margin:0 0 10px;">네트워크 문제일 수 있어요. 아래 버튼으로 다시 시도해보고, 그래도 안 되면 "복사하기"로 글을 복사해서 선생님이 안내한 패들렛에 붙여넣어 주세요.</p>
+          <div class="btn-row">
+            <button class="btn-navy" onclick="submitWork()">🔁 다시 시도</button>
+            <button class="btn-outline" onclick="copyText()">📋 복사하기</button>
+          </div>
+        </div>`
+      : `<button class="btn-navy" onclick="submitWork()">📮 선생님께 제출하기</button>`;
+  } else {
+    inner.innerHTML = renderStepNav() + renderStepBody();
+    bindStepInputs();
+  }
+}
+
+// ---- teacher dashboard (LCMS view, no password needed) ----
+function openTeacher(){
+  const bg = document.createElement('div');
+  bg.className='modal-bg';
+  bg.innerHTML = `<div class="modal" style="max-width:340px;text-align:center;">
+    <span class="modal-close" onclick="this.closest('.modal-bg').remove()">✕</span>
+    <h2 style="font-size:18px;">👩‍🏫 선생님 확인</h2>
+    <p style="font-size:13px;color:#6b6353;margin-bottom:14px;">암호를 입력하세요</p>
+    <input type="tel" id="teacherPinInput" inputmode="numeric" style="width:100%;text-align:center;font-size:18px;letter-spacing:4px;padding:12px;border:1.5px solid var(--line);border-radius:8px;margin-bottom:12px;" placeholder="••••">
+    <p id="pinError" style="color:var(--stamp-red);font-size:12px;display:none;margin-bottom:8px;">암호가 맞지 않아요.</p>
+    <button class="btn-navy" style="width:100%;" onclick="checkTeacherPin(this)">확인</button>
+  </div>`;
+  document.body.appendChild(bg);
+  document.getElementById('teacherPinInput').focus();
+}
+
+async function checkTeacherPin(btn){
+  const input = document.getElementById('teacherPinInput');
+  if(input.value !== '1215'){
+    document.getElementById('pinError').style.display = 'block';
+    input.value = ''; input.focus();
+    return;
+  }
+  const modalBg = btn.closest('.modal-bg');
+  modalBg.remove();
+  await openTeacherDashboard();
+}
+
+async function openTeacherDashboard(){
+  const bg = document.createElement('div');
+  bg.className='modal-bg';
+  bg.innerHTML = `<div class="modal"><span class="modal-close" onclick="this.closest('.modal-bg').remove()">✕</span>
+    <h2>📊 제출 현황 (교사용 LCMS)</h2>
+    <div id="dashArea">불러오는 중...</div>
+    <button class="btn-outline" style="margin-top:14px;" onclick="exportCSV()">⬇️ CSV로 내보내기</button></div>`;
+  document.body.appendChild(bg);
+
+  try{
+    let list;
+    try{
+      list = await window.storage.list('sub_', true);
+    }catch(listErr){
+      list = null; // no keys yet under this prefix
+    }
+    const keys = (list && list.keys) || [];
+    const records = [];
+    for(const k of keys){
+      try{ const r = await window.storage.get(k, true); if(r) records.push(JSON.parse(r.value)); }catch(e){}
+    }
+    records.sort((a,b)=> a.cls.localeCompare(b.cls) || (parseInt(a.num)||0)-(parseInt(b.num)||0));
+    window.__records = records;
+    const rows = records.map((r,i)=>`
+      <tr onclick="document.getElementById('detail${i}').style.display=document.getElementById('detail${i}').style.display==='table-row'?'none':'table-row';">
+        <td>${r.cls}</td><td>${r.num||'-'}</td><td>${r.name}</td>
+        <td><span class="tag l${r.level}">${r.autonomy.type}</span></td>
+        <td>${r.aiAssignedLevel ? levelIcon(r.aiAssignedLevel) : '수동선택'}${r.teacherOverride?' → '+levelIcon(r.level)+' (조정됨)':''}</td>
+        <td>${r.hasDraft?'있음':'-'}</td>
+        <td>${r.feedbackUsed?('사용 '+r.feedbackCount+'회'):'미사용'}</td>
+        <td>${r.revisedAfterFeedback?'예':'-'}</td>
+        <td>${new Date(r.submittedAt).toLocaleString('ko-KR')}</td>
+      </tr>
+      <tr id="detail${i}" style="display:none;"><td colspan="9" class="row-detail">[AI 배정 사유]\n${r.aiAssignReason||'(없음)'}\n\n[최종글]\n${r.finalText}\n\n[손글씨 초안]\n${r.draftText||'(없음)'}\n\n[선택정보]\n${JSON.stringify(r.autonomy.detail||{addedWords:r.autonomy.addedWords, wordCount:r.autonomy.wordCount}||{})}</td></tr>`).join('');
+    document.getElementById('dashArea').innerHTML = records.length
+      ? `<table><thead><tr><th>반</th><th>번호</th><th>이름</th><th>레벨/자기작문 정도</th><th>AI배정→실사용</th><th>손글씨초안</th><th>AI피드백</th><th>퇴고여부</th><th>제출시각</th></tr></thead><tbody>${rows}</tbody></table><p style="font-size:11.5px;color:#9a9184;margin-top:8px;">행을 클릭하면 AI 배정 사유, 최종글, 손글씨 초안이 함께 펼쳐져요.</p>`
+      : `<p style="color:#9a9184;">아직 제출된 학생이 없어요.</p>`;
+  }catch(e){
+    document.getElementById('dashArea').innerHTML = `<p>불러오는 중 오류가 발생했어요.</p><p style="font-size:11px;color:#9a9184;">[디버그] ${(e && e.message) || e}</p>`;
+  }
+}
+
+function levelIcon(l){ return l===1?'🚪':l===2?'🚪✨':'🌍✨'; }
+
+function doorSVG(l, size){
+  const s = size || 54;
+  if(l===1){
+    return `<svg width="${s}" height="${s}" viewBox="0 0 60 70" style="display:block;margin:0 auto;">
+      <rect x="10" y="6" width="40" height="60" rx="2" fill="#8B5E34" stroke="#5b3a1e" stroke-width="2"/>
+      <circle cx="42" cy="38" r="2.5" fill="#F4EEDD"/>
+      <path d="M5 20 Q0 24 5 28" stroke="#8B5E34" stroke-width="2.5" fill="none" opacity=".7" stroke-linecap="round"/>
+      <path d="M5 32 Q0 36 5 40" stroke="#8B5E34" stroke-width="2.5" fill="none" opacity=".45" stroke-linecap="round"/>
+    </svg>`;
+  }
+  if(l===2){
+    return `<svg width="${s}" height="${s}" viewBox="0 0 60 70" style="display:block;margin:0 auto;">
+      <defs><linearGradient id="glow2-${l}" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#2E6FBA"/><stop offset="100%" stop-color="#2C9E8F"/>
+      </linearGradient></defs>
+      <rect x="10" y="6" width="40" height="60" rx="2" fill="url(#glow2-${l})" opacity=".85"/>
+      <rect x="10" y="6" width="16" height="60" rx="2" fill="#8B5E34" stroke="#5b3a1e" stroke-width="2"/>
+      <circle cx="23" cy="38" r="2" fill="#F4EEDD"/>
+      <circle cx="35" cy="18" r="1.6" fill="#fff"/><circle cx="43" cy="28" r="1.1" fill="#fff"/><circle cx="38" cy="48" r="1.3" fill="#fff"/>
+    </svg>`;
+  }
+  return `<svg width="${s}" height="${s}" viewBox="0 0 60 70" style="display:block;margin:0 auto;">
+    <defs><linearGradient id="glow3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2E6FBA"/><stop offset="33%" stop-color="#2C9E8F"/><stop offset="66%" stop-color="#E8963C"/><stop offset="100%" stop-color="#D9527A"/>
+    </linearGradient></defs>
+    <rect x="10" y="6" width="40" height="60" rx="2" fill="url(#glow3)"/>
+    <rect x="10" y="6" width="7" height="60" rx="2" fill="#8B5E34"/>
+    <circle cx="30" cy="18" r="1.6" fill="#fff"/><circle cx="42" cy="14" r="1.1" fill="#fff"/><circle cx="22" cy="46" r="1.3" fill="#fff"/><circle cx="44" cy="50" r="1.1" fill="#fff"/><circle cx="35" cy="32" r="1" fill="#fff"/>
+  </svg>`;
+}
+
+function earthSVG(){
+  return `<svg width="130" height="130" viewBox="0 0 120 120" style="display:block;margin:0 auto;">
+    <defs>
+      <radialGradient id="earthGrad" cx="35%" cy="35%" r="70%">
+        <stop offset="0%" stop-color="#8FD3C7"/><stop offset="55%" stop-color="#2E6FBA"/><stop offset="100%" stop-color="#1B2A4A"/>
+      </radialGradient>
+      <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#2E6FBA"/><stop offset="33%" stop-color="#2C9E8F"/><stop offset="66%" stop-color="#E8963C"/><stop offset="100%" stop-color="#D9527A"/>
+      </linearGradient>
+    </defs>
+    <circle cx="60" cy="60" r="52" fill="none" stroke="url(#ringGrad)" stroke-width="3" stroke-dasharray="5 7"/>
+    <circle cx="60" cy="60" r="42" fill="url(#earthGrad)"/>
+    <path d="M40 40 Q50 35 60 42 Q70 48 62 55 Q55 60 45 58 Q38 52 40 40Z" fill="#4C7A5D" opacity=".8"/>
+    <path d="M70 65 Q80 62 82 72 Q78 80 68 78 Q62 74 70 65Z" fill="#4C7A5D" opacity=".8"/>
+    <circle cx="20" cy="22" r="2" fill="#fff"/><circle cx="102" cy="30" r="1.5" fill="#fff"/><circle cx="96" cy="92" r="2" fill="#fff"/><circle cx="14" cy="88" r="1.5" fill="#fff"/><circle cx="60" cy="8" r="1.3" fill="#fff"/>
+  </svg>`;
+}
+
+function eunNeun(name){
+  if(!name) return '는';
+  const ch = name.trim().slice(-1);
+  const code = ch.charCodeAt(0);
+  if(code>=0xAC00 && code<=0xD7A3) return ((code-0xAC00)%28!==0) ? '은' : '는';
+  return '는';
+}
+
+function toast(msg){
+  const el = document.createElement('div');
+  el.textContent = msg;
+  el.style.cssText = 'position:fixed;left:50%;bottom:32px;transform:translateX(-50%);background:var(--navy);color:#fff;padding:12px 20px;border-radius:14px;font-size:13.5px;box-shadow:0 4px 16px rgba(0,0,0,.25);z-index:999;max-width:88%;text-align:center;line-height:1.5;';
+  document.body.appendChild(el);
+  const dur = Math.min(7000, Math.max(2400, msg.length*70));
+  setTimeout(()=>{ el.style.transition='opacity .3s'; el.style.opacity='0'; setTimeout(()=>el.remove(),300); }, dur);
+}
+
+function exportCSV(){
+  const records = window.__records || [];
+  if(!records.length){ toast('내보낼 데이터가 없어요.'); return; }
+  const header = ['반','번호','이름','레벨','자기작문유형','AI배정레벨','교사조정여부','손글씨초안유무','AI피드백사용','피드백횟수','퇴고여부','제출시각','최종문장','손글씨초안텍스트'];
+  const rows = records.map(r=>[r.cls,r.num||'',r.name,r.level,r.autonomy.type,r.aiAssignedLevel||'수동',r.teacherOverride?'Y':'N',r.hasDraft?'Y':'N',r.feedbackUsed?'Y':'N',r.feedbackCount,r.revisedAfterFeedback?'Y':'N',r.submittedAt,'"'+r.finalText.replace(/"/g,'""')+'"','"'+(r.draftText||'').replace(/"/g,'""')+'"']);
+  const csv = [header.join(','), ...rows.map(row=>row.join(','))].join('\n');
+  const blob = new Blob(["\uFEFF"+csv], {type:'text/csv;charset=utf-8;'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'GATE_holiday_submissions.csv'; a.click();
+  URL.revokeObjectURL(url);
+}
+
+render();
+</script>
+</body>
+</html>
